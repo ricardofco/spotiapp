@@ -11,6 +11,9 @@ export class SearchComponent {
   loading: boolean = false;
   timer: any = null;
   WAIT_INTERVAL: number = 1000;
+  errorMessage: string = "";
+  error: boolean;
+
   constructor(private service: SpotifyService) {}
 
   search(value: string) {
@@ -27,9 +30,16 @@ export class SearchComponent {
     );
   }
   triggerChange = (value: string) => {
-    this.service.getArtists(value).subscribe((response) => {
-      this.artists = response;
-      this.loading = false;
-    });
+    this.service.getArtists(value).subscribe(
+      (response) => {
+        this.artists = response;
+        this.loading = false;
+      },
+      (err) => {
+        this.errorMessage = err.error.error.message;
+        this.error = true;
+        this.loading = false;
+      }
+    );
   };
 }
