@@ -8,11 +8,18 @@ import { SpotifyService } from "../../services/spotify.service";
 })
 export class SearchComponent {
   artists: any[] = [];
+  loading: boolean = false;
   timer: any = null;
   WAIT_INTERVAL: number = 1000;
   constructor(private service: SpotifyService) {}
 
   search(value: string) {
+    if (value.length === 0) {
+      this.loading = false;
+      this.artists = [];
+      return;
+    }
+    this.loading = true;
     clearTimeout(this.timer);
     this.timer = setTimeout(
       () => this.triggerChange(value),
@@ -20,13 +27,9 @@ export class SearchComponent {
     );
   }
   triggerChange = (value: string) => {
-    if (value.length > 0) {
-      this.service.getArtist(value).subscribe((response) => {
-        this.artists = response;
-        console.log(this.artists);
-      });
-    } else {
-      this.artists = [];
-    }
+    this.service.getArtist(value).subscribe((response) => {
+      this.artists = response;
+      this.loading = false;
+    });
   };
 }

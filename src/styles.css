@@ -36,6 +36,19 @@ hr {
     height: 50px;
 }
 
+.p-absolute{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fa-spinner{
+    color: #1ed760;
+}
 
 /* Animaciones */
 
