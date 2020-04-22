@@ -8,12 +8,17 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
+import { DataCardComponent } from './components/shared/data-card/data-card.component';
 
 //routes
 import { ROUTES } from './app.routes';
+
+//pipes
 import { NoimagesPipe } from './pipes/noimages.pipe';
-import { LoadingComponent } from './components/shared/loading/loading.component';
-import { DataCardComponent } from './components/shared/data-card/data-card.component';
+import {DomseguroPipe} from './pipes/domseguro.pipe';
+import { AlertComponent } from './components/shared/alert/alert.component';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +27,11 @@ import { DataCardComponent } from './components/shared/data-card/data-card.compo
     SearchComponent,
     ArtistComponent,
     NavbarComponent,
-    NoimagesPipe,
     LoadingComponent,
-    DataCardComponent
+    DataCardComponent,
+    NoimagesPipe,
+    DomseguroPipe,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
