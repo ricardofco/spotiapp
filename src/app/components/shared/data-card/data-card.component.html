@@ -1,5 +1,5 @@
 <div class="card-columns mt-5">
-  <div class="card" *ngFor="let item of items">
+  <div class="card" (click)="showDetails(item)" *ngFor="let item of items">
     <img [src]="item.images | noimages" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ item.name }}</h5>

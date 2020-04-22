@@ -9,7 +9,7 @@ export class SpotifyService {
   //browse/new-releases?limit=20
 
   token: string =
-    "BQDvWnk3tZ0pYnYY2RdnmytmoTe3n5oWZteCPDTyacanftSEiL5lP4uqIpEGn0u3cnfI5Y72vPioWxBTppT1l0QFZqVpRXg3Cw-KMpCN5MBju0YxxZ_FS3DnNbBrFsZARqiwgBN4rzEAKztHMjHRKrwZJeEErXA";
+    "BQAOyLquZTXRrEUoKmodBYZlY9J-qBLB3svavUEwdeDOpCJnvZYYW4GJsfC7it_oCi63Y_UWT3uGhh2N2VLk5Q4OoYf0WVN-BRMOqbqh3cm_IyqTZfJUpzWYElTw3DhoZxPLQhAfpqizJdLaPefjU36Mpo4j58s";
   constructor(private http: HttpClient) {}
 
   getQuery(query: string) {
@@ -27,9 +27,13 @@ export class SpotifyService {
     );
   }
 
-  getArtist(term: string) {
+  getArtists(term: string) {
     return this.getQuery(`search?q=${term}&type=artist&limit=20`).pipe(
       map((response) => response["artists"].items)
     );
+  }
+
+  getArtist(id: string) {
+    return this.getQuery(`artists/${id}`);
   }
 }

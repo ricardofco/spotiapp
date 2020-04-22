@@ -27,7 +27,7 @@ export class SearchComponent {
     );
   }
   triggerChange = (value: string) => {
-    this.service.getArtist(value).subscribe((response) => {
+    this.service.getArtists(value).subscribe((response) => {
       this.artists = response;
       this.loading = false;
     });
